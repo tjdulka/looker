@@ -64,10 +64,10 @@ view: v_flattened_products {
     type: string
     sql: ${TABLE}.specifications_values ;;
   }
-  measure: spec_value_count {
-    type: count
-    drill_fields: [specifications_values]
-  }
+  measure: specifications_values_count {
+    type: count_distinct
+    sql: ${TABLE}.specifications_values ;;
+    }
 
   measure: count {
     type: count
