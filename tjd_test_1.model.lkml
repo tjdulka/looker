@@ -868,19 +868,19 @@ explore: v_magellan_product {
 explore: v_magellan_product_v2 {
   join: vMagellanProductV2__operational_attributes {
     view_label: "Vmagellanproductv2: Operational Attributes"
-    sql: LEFT JOIN UNNEST(${vMagellanProductV2.operational_attributes}) as vMagellanProductV2__operational_attributes ;;
+    sql: LEFT JOIN UNNEST(${v_magellan_product_v2.operational_attributes}) as vMagellanProductV2__operational_attributes ;;
     relationship: one_to_many
   }
 
   join: vMagellanProductV2__color {
     view_label: "Vmagellanproductv2: Color"
-    sql: LEFT JOIN UNNEST([${vMagellanProductV2.color}]) as vMagellanProductV2__color ;;
+    sql: LEFT JOIN UNNEST([${v_magellan_product_v2.color}]) as vMagellanProductV2__color ;;
     relationship: one_to_one
   }
 
   join: vMagellanProductV2__descriptions {
     view_label: "Vmagellanproductv2: Descriptions"
-    sql: LEFT JOIN UNNEST([${vMagellanProductV2.descriptions}]) as vMagellanProductV2__descriptions ;;
+    sql: LEFT JOIN UNNEST([${v_magellan_product_v2.descriptions}]) as vMagellanProductV2__descriptions ;;
     relationship: one_to_one
   }
 
@@ -892,37 +892,37 @@ explore: v_magellan_product_v2 {
 
   join: vMagellanProductV2__specifications {
     view_label: "Vmagellanproductv2: Specifications"
-    sql: LEFT JOIN UNNEST(${vMagellanProductV2.specifications}) as vMagellanProductV2__specifications ;;
+    sql: LEFT JOIN UNNEST(${v_magellan_product_v2.specifications}) as vMagellanProductV2__specifications ;;
     relationship: one_to_many
   }
 
   join: vMagellanProductV2__manufacturer {
     view_label: "Vmagellanproductv2: Manufacturer"
-    sql: LEFT JOIN UNNEST([${vMagellanProductV2.manufacturer}]) as vMagellanProductV2__manufacturer ;;
+    sql: LEFT JOIN UNNEST([${v_magellan_product_v2.manufacturer}]) as vMagellanProductV2__manufacturer ;;
     relationship: one_to_one
   }
 
   join: vMagellanProductV2__features {
     view_label: "Vmagellanproductv2: Features"
-    sql: LEFT JOIN UNNEST(${vMagellanProductV2.features}) as vMagellanProductV2__features ;;
+    sql: LEFT JOIN UNNEST(${v_magellan_product_v2.features}) as v_magellan_product_v2__features ;;
     relationship: one_to_many
   }
 
   join: vMagellanProductV2__condition {
     view_label: "Vmagellanproductv2: Condition"
-    sql: LEFT JOIN UNNEST([${vMagellanProductV2.condition}]) as vMagellanProductV2__condition ;;
+    sql: LEFT JOIN UNNEST([${v_magellan_product_v2.condition}]) as vMagellanProductV2__condition ;;
     relationship: one_to_one
   }
 
   join: vMagellanProductV2__warranties {
     view_label: "Vmagellanproductv2: Warranties"
-    sql: LEFT JOIN UNNEST([${vMagellanProductV2.warranties}]) as vMagellanProductV2__warranties ;;
+    sql: LEFT JOIN UNNEST([${v_magellan_product_v2.warranties}]) as vMagellanProductV2__warranties ;;
     relationship: one_to_one
   }
 
   join: vMagellanProductV2__names {
     view_label: "Vmagellanproductv2: Names"
-    sql: LEFT JOIN UNNEST([${vMagellanProductV2.names}]) as vMagellanProductV2__names ;;
+    sql: LEFT JOIN UNNEST([${v_magellan_product_v2.names}]) as vMagellanProductV2__names ;;
     relationship: one_to_one
   }
 }
@@ -930,13 +930,13 @@ explore: v_magellan_product_v2 {
 explore: v_products_v2 {
   join: vProductsV2__names {
     view_label: "Vproductsv2: Names"
-    sql: LEFT JOIN UNNEST([${vProductsV2.names}]) as vProductsV2__names ;;
+    sql: LEFT JOIN UNNEST([${v_products_v2.names}]) as vProductsV2__names ;;
     relationship: one_to_one
   }
 
   join: vProductsV2__specifications {
     view_label: "Vproductsv2: Specifications"
-    sql: LEFT JOIN UNNEST(${vProductsV2.specifications}) as vProductsV2__specifications ;;
+    sql: LEFT JOIN UNNEST(${v_products_v2.specifications}) as vProductsV2__specifications ;;
     relationship: one_to_many
   }
 }
