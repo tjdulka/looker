@@ -26,6 +26,12 @@ explore: flattened_products {}
 explore: flattened_products_copy {}
 
 explore: magellan_product_copy {
+  conditionally_filter: {
+    filters: {
+      field: magellan_product_copy.event_date
+      value: "1 days ago for 1 day"
+    }
+  }
   join: magellan_product_copy__metadata {
     view_label: "Magellan Product Copy: Metadata"
     sql: LEFT JOIN UNNEST([${magellan_product_copy.metadata}]) as magellan_product_copy__metadata ;;
@@ -830,7 +836,7 @@ explore: v_magellan_product {
 
   join: v_magellan_product__specifications {
     view_label: "V Magellan Product: Specifications"
-    sql: LEFT JOIN UNNEST(${v_magellan_product.specifications}) as v_magellan_product__specifications ;;
+    sql: CROSS JOIN UNNEST(${v_magellan_product.specifications}) as v_magellan_product__specifications ;;
     relationship: one_to_many
   }
 
