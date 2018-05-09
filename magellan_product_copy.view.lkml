@@ -312,6 +312,11 @@ view: magellan_product_copy {
     sql: ${TABLE}.width ;;
   }
 
+  measure: specifications_count {
+    type: count_distinct
+    sql: ${specifications} ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [carrier_name]
