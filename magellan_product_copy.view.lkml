@@ -313,13 +313,18 @@ view: magellan_product_copy {
   }
 
   measure: specifications_count {
-    type: count_distinct
-    sql: ${specifications} ;;
+    type: number
+    sql: COUNT(${TABLE}.specifications.display_name) ;;
+  }
+
+  measure: sku_count {
+    type: number
+    sql: COUNT(${TABLE}.sku_id) ;;
   }
 
   measure: count {
     type: count
-    drill_fields: [carrier_name]
+    drill_fields: [sku_id]
   }
 }
 

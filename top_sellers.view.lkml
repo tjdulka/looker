@@ -12,6 +12,7 @@ view: top_sellers {
   }
 
   dimension: reccnt {
+    description: "# SKUs sold in this period"
     type: number
     sql: ${TABLE}.reccnt ;;
   }

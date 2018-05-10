@@ -32,6 +32,14 @@ explore: magellan_product_copy {
       value: "1 days ago for 1 day"
     }
   }
+
+  join: sku_spec_changes {
+    view_label: "Magellan Product Copy: Specifications"
+    sql: ${magellan_product_copy.sku_id} = ${sku_spec_changes.sku_id};;
+    relationship: one_to_one
+
+  }
+
   join: magellan_product_copy__metadata {
     view_label: "Magellan Product Copy: Metadata"
     sql: LEFT JOIN UNNEST([${magellan_product_copy.metadata}]) as magellan_product_copy__metadata ;;
