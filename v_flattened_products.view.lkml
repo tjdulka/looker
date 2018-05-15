@@ -47,7 +47,14 @@ view: v_flattened_products {
     label: "Best Buy SKU Page"
     url: "http://www.google.com/search?q=bestbuy.com {{ value | encode_uri }}&btnI"
     icon_url: "http://www.google.com/s2/favicons?domain=www.bestbuy.com"
-  }
+    }
+
+    link: {
+      label: "Product Analytics Dashboard"
+      url: "https://bestbuy.looker.com/dashboards/2?Product%20SKU={{ value | encode_uri }}"
+      icon_url: "http://www.looker.com/favicon.ico"
+    }
+
   }
 
   dimension: specifications_display_name {
