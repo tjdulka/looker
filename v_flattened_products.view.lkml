@@ -68,6 +68,7 @@ view: v_flattened_products {
   measure: specifications_values_count {
     type: count_distinct
     sql: ${specifications_values} ;;
+    drill_fields: [cat_display_name, skuid, brand, specifications_tags, specifications_display_name, specifications_values]
     }
 
   measure: count {

@@ -7,7 +7,7 @@ include: "*.view"
 include: "*.dashboard"
 
 datagroup: tjd_test_1_default_datagroup {
-  # sql_trigger: SELECT MAX(id) FROM etl_log;;
+  sql_trigger: SELECT MAX(event_time) FROM Product.magellan_product_copy;;
   max_cache_age: "1 hour"
 }
 
@@ -29,15 +29,26 @@ explore: magellan_product_copy {
   conditionally_filter: {
     filters: {
       field: magellan_product_copy.event_date
-      value: "1 days ago for 1 day"
+      value: "this year "
     }
   }
-
+# Example PDT implementation, persisting all changes based on trigger group value
   join: sku_spec_changes {
-    view_label: "Magellan Product Copy: Specifications"
-    sql: ${magellan_product_copy.sku_id} = ${sku_spec_changes.sku_id};;
-    relationship: one_to_one
+    view_label: "Magellan Product Copy"
+    sql_on: ${magellan_product_copy.sku_id} = ${sku_spec_changes.sku_id} AND ${magellan_product_copy.event_date} = ${sku_spec_changes.most_recent_change_date};;
+    relationship: many_to_one
+  }
+# Example templated derived table, only builds for the dates includes in the event date filter
+  join: sku_spec_changes_date_parameter {
+    view_label: "Magellan Product Copy Param"
+    sql_on:  ${magellan_product_copy.sku_id} = ${sku_spec_changes_date_parameter.sku_id};;
+    relationship: many_to_one
+  }
 
+  join: category_copy {
+    view_label: "Category"
+    sql_on: ${magellan_product_copy.sku_id} = ${category_copy.sku_id};;
+    relationship: one_to_one
   }
 
   join: magellan_product_copy__metadata {

@@ -103,6 +103,11 @@ view: magellan_product_copy {
     sql: ${TABLE}.event_time ;;
   }
 
+  dimension: days_since_event {
+    type: number
+    sql: DATE_DIFF(CURRENT_DATE(), ${event_date}, day) ;;
+  }
+
   dimension: event_type {
     type: string
     sql: ${TABLE}.event_type ;;
@@ -255,6 +260,12 @@ view: magellan_product_copy {
   dimension: sku_id {
     type: string
     sql: ${TABLE}.sku_id ;;
+
+    link: {
+      label: "Product Analytics Dashboard"
+      url: "https://bestbuy.looker.com/dashboards/2?Product%20SKU={{ value | encode_uri }}"
+      icon_url: "http://www.looker.com/favicon.ico"
+    }
   }
 
   dimension: special_features {
@@ -265,6 +276,17 @@ view: magellan_product_copy {
   dimension: specifications {
     hidden: yes
     sql: ${TABLE}.specifications ;;
+  }
+
+  dimension: number_of_specifications {
+    type: number
+    sql: (SELECT count(*) FROM UNNEST(${specifications})) ;;
+  }
+
+  measure: max_number_of_specifications {
+    type: max
+    sql: ${number_of_specifications} ;;
+    drill_fields: [sku_id, event_date, brand, magellan_product_copy__specifications.values.tags, magellan_product_copy__names.display, magellan_product_copy__specifications.display_name, magellan_product_copy__specifications.values]
   }
 
   dimension: studio {
@@ -312,19 +334,19 @@ view: magellan_product_copy {
     sql: ${TABLE}.width ;;
   }
 
-  measure: specifications_count {
-    type: number
-    sql: COUNT(${TABLE}.specifications.display_name) ;;
-  }
-
+#   measure: specifications_count {
+#     type: number
+#     sql: COUNT(${TABLE}.specifications.display_name) ;;
+#   }
+#
   measure: sku_count {
-    type: number
-    sql: COUNT(${TABLE}.sku_id) ;;
+    type: count_distinct
+    sql: ${sku_id} ;;
   }
 
   measure: count {
     type: count
-    drill_fields: [sku_id]
+    drill_fields: [sku_id, event_date, brand, magellan_product_copy__specifications.values.tags, magellan_product_copy__specifications.values]
   }
 }
 
@@ -408,6 +430,36 @@ view: magellan_product_copy__specifications {
   dimension: values {
     type: string
     sql: ARRAY_TO_STRING(${TABLE}.values,", ") ;;
+    action: {
+      label: "Update Specification Value"
+      url: "https://desolate-refuge-53336.herokuapp.com/posts"
+      icon_url: "https://sendgrid.com/favicon.ico"
+      param: {
+        name: "some_auth_code"
+        value: "abc123456"
+      }
+      form_param: {
+        name: "Specification Name"
+        required: yes
+        default: "{{ display_name }}"
+      }
+      form_param: {
+        name: "Value"
+        required: yes
+      }
+    }
+  }
+
+  dimension: count_of_specification_values {
+    hidden: yes
+    type: number
+    sql: (SELECT count(*) FROM UNNEST(${TABLE}.values)) ;;
+    }
+
+  measure: number_of_specification_values {
+    type: max
+    sql: ${count_of_specification_values} ;;
+    drill_fields: [display_name, values]
   }
 }
 
