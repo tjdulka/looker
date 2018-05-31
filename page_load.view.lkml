@@ -1,3 +1,6 @@
+explore: page_load {
+}
+
 view: page_load {
   sql_table_name: `gcp-com-clickstream-test.clickstream.page_load`
     ;;

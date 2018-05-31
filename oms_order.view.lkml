@@ -1,3 +1,5 @@
+explore: oms_order {
+}
 view: oms_order {
   sql_table_name: `gcp-com-clickstream-test.transactions.oms_order`
     ;;

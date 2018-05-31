@@ -1,3 +1,6 @@
+explore: plp_product_click {
+}
+
 view: plp_product_click {
   sql_table_name: `gcp-com-clickstream-prod.clickstream.plp_product_click`
     ;;

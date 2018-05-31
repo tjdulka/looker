@@ -1,3 +1,6 @@
+explore: purchase {
+}
+
 view: purchase {
   sql_table_name: `gcp-com-clickstream-test.transactions.purchase`
     ;;
