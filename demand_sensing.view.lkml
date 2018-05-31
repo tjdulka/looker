@@ -77,6 +77,11 @@ view: demand_sensing {
     sql: ${users} ;;
   }
 
+  measure: users_measure {
+    type: number
+    sql: ${users} ;;
+  }
+
   measure: count {
     type: count
     drill_fields: []
