@@ -4,7 +4,7 @@ connection: "tjd-bigquery"
 include: "*.view"
 
 # include all the dashboards
-include: "*.dashboard"
+include: "bb.*.dashboard"
 
 datagroup: tjd_test_1_default_datagroup {
   sql_trigger: SELECT MAX(event_time) FROM Product.magellan_product_copy;;
