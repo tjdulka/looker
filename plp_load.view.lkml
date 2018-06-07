@@ -15,7 +15,7 @@ view: plp_load {
   }
 
   dimension: destination_zip_code {
-    type: string
+    type: zipcode
     sql: ${TABLE}.destination_zip_code ;;
   }
 
@@ -53,6 +53,28 @@ view: plp_load {
     sql: ${TABLE}.is_pick_up_today_selected ;;
   }
 
+  measure: count_pick_up_today_selected {
+    type: count
+    filters: {
+      field: is_pick_up_today_selected
+      value: "yes"
+    }
+  }
+
+  measure: percent_pick_up_today_selected {
+    type: number
+    value_format_name: percent_2
+    sql: ${count_pick_up_today_selected}/${count} ;;
+  }
+
+  measure: count_not_pick_up_today_selected {
+    type: count
+    filters: {
+      field: is_pick_up_today_selected
+      value: "no"
+    }
+  }
+
   dimension: loyalty_id {
     type: string
     sql: ${TABLE}.loyalty_id ;;
@@ -84,12 +106,12 @@ view: plp_load {
   }
 
   dimension: physical_zip_code {
-    type: string
+    type: zipcode
     sql: ${TABLE}.physical_zip_code ;;
   }
 
   dimension: shipping_destination_zip_code {
-    type: string
+    type: zipcode
     sql: ${TABLE}.shipping_destination_zip_code ;;
   }
 
@@ -99,7 +121,7 @@ view: plp_load {
   }
 
   dimension: store_availability_zip_code {
-    type: string
+    type: zipcode
     sql: ${TABLE}.store_availability_zip_code ;;
   }
 
@@ -109,12 +131,12 @@ view: plp_load {
   }
 
   dimension: store_search_zip_code {
-    type: string
+    type: zipcode
     sql: ${TABLE}.store_search_zip_code ;;
   }
 
   dimension: store_zip_code {
-    type: string
+    type: zipcode
     sql: ${TABLE}.store_zip_code ;;
   }
 
@@ -123,9 +145,20 @@ view: plp_load {
     sql: ${TABLE}.term_searched ;;
   }
 
-  dimension: total_number_of_results {
+  dimension: total_number_of_results_raw {
     type: number
+    hidden: yes
     sql: ${TABLE}.total_number_of_results ;;
+  }
+
+  measure: total_number_of_results {
+    type: sum
+    sql: ${total_number_of_results_raw} ;;
+  }
+
+  measure: avg_number_of_results {
+    type: average
+    sql: ${total_number_of_results_raw} ;;
   }
 
   dimension: user_agent_family {
@@ -138,13 +171,18 @@ view: plp_load {
     sql: ${TABLE}.user_id ;;
   }
 
+  measure: distinct_users {
+    type: count_distinct
+    sql: ${user_id} ;;
+  }
+
   dimension: user_location_determined_by {
     type: string
     sql: ${TABLE}.user_location_determined_by ;;
   }
 
   dimension: user_location_zip_code {
-    type: string
+    type: zipcode
     sql: ${TABLE}.user_location_zip_code ;;
   }
 
