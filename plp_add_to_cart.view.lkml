@@ -1,3 +1,5 @@
+explore: plp_add_to_cart {
+}
 view: plp_add_to_cart {
   sql_table_name: `gcp-com-clickstream-prod.clickstream.plp_add_to_cart`
     ;;
