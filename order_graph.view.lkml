@@ -1,5 +1,3 @@
-explore: order_graph {
-}
 view: order_graph {
   sql_table_name: `gcp-com-clickstream-prod.transactions.order_graph`
     ;;
