@@ -1,6 +1,5 @@
 view: order_graph {
-  sql_table_name: `gcp-com-clickstream-prod.transactions.order_graph`
-    ;;
+  sql_table_name: `gcp-com-clickstream-prod.transactions.order_graph`;;
 
   dimension: id {
     primary_key: yes
