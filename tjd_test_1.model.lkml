@@ -12,17 +12,24 @@ datagroup: tjd_test_1_default_datagroup {
 
 persist_with: tjd_test_1_default_datagroup
 
-explore: active_products {}
 
-explore: category {}
-
-explore: category_copy {}
-
-explore: category_hierarchies_copy {}
-
-explore: flattened_products {}
-
-explore: flattened_products_copy {}
+explore: order_graph {
+  join: oms_order {
+    sql_on:  ${order_graph.order_id} = ${oms_order.order_id};;
+    relationship: one_to_one
+  }
+}
+# explore: active_products {}
+#
+# explore: category {}
+#
+# explore: category_copy {}
+#
+# explore: category_hierarchies_copy {}
+#
+# explore: flattened_products {}
+#
+# explore: flattened_products_copy {}
 
 explore: magellan_product_copy {
   conditionally_filter: {

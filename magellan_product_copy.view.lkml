@@ -10,8 +10,9 @@ view: magellan_product_copy {
     type: string
     sql: ${TABLE}.bby_sku_id ;;
   }
-
+### Here is a developer model
   dimension: brand {
+    description: "This field is the brand, it includes links to PCM, Best Buy, etc."
     type: string
     sql: ${TABLE}.brand ;;
 
@@ -106,6 +107,31 @@ view: magellan_product_copy {
   dimension: days_since_event {
     type: number
     sql: DATE_DIFF(CURRENT_DATE(), ${event_date}, day) ;;
+  }
+
+  dimension: days_since_event_tier {
+    type: tier
+    tiers: [70,80,90,100]
+    sql: ${days_since_event} ;;
+  }
+
+  dimension: is_beyond_80_days {
+    type: yesno
+    sql: ${days_since_event} > 80 ;;
+  }
+
+  measure: count_beyond_80 {
+    type: count
+    filters: {
+      field: is_beyond_80_days
+      value: "yes"
+    }
+  }
+
+  measure: percent_beyond_80 {
+    type: number
+    sql: ${count_beyond_80}/${count} ;;
+    value_format_name: percent_0
   }
 
   dimension: event_type {

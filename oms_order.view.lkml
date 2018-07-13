@@ -79,6 +79,7 @@ view: oms_order {
   }
 
   dimension: order_id {
+    primary_key: yes
     type: string
     sql: ${TABLE}.order_id ;;
   }
@@ -109,8 +110,46 @@ view: oms_order {
   }
 
   dimension: quantity {
-    type: string
-    sql: ${TABLE}.quantity ;;
+    type: number
+    sql: CAST(${TABLE}.quantity as INT64) ;;
+  }
+
+  dimension: quantity_tiered {
+    type: tier
+    tiers: [0,1,5,10,50,100]
+    sql: ${quantity} ;;
+  }
+  dimension: big_orders {
+    type: yesno
+    sql: ${quantity} > 5;;
+  }
+
+  measure: big_order_count {
+    type: count
+    filters: {
+      field: big_orders
+      value: "yes"
+    }
+  }
+
+  measure: small_order_count {
+    type: count
+    filters: {
+      field: big_orders
+      value: "no"
+    }
+  }
+
+  measure: big_order_precentage {
+    type: number
+    sql: ${big_order_count}/${count} ;;
+    value_format_name: percent_2
+  }
+
+  measure: small_order_precentage {
+    type: number
+    sql: ${small_order_count}/${count} ;;
+    value_format_name: percent_2
   }
 
   dimension_group: release {
@@ -166,6 +205,11 @@ view: oms_order {
   dimension: user_id {
     type: string
     sql: ${TABLE}.user_id ;;
+  }
+
+  measure: count_users {
+    type: count_distinct
+    sql: ${user_id} ;;
   }
 
   dimension: view_type {

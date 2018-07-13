@@ -80,4 +80,9 @@ view: pdp_specifications_click {
     type: count
     drill_fields: []
   }
+
+  measure:  count_distinct_users{
+    type: count_distinct
+    sql: ${user_id} ;;
+  }
 }

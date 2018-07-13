@@ -135,6 +135,6 @@ view: plp_add_to_cart {
 
   measure: count {
     type: count
-    drill_fields: []
+    drill_fields: [visitor_id, event_time, view_type, user_agent_family, sku_id, term_searched,  page_number, navigation_type]
   }
 }

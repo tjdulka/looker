@@ -19,7 +19,8 @@ view: purchase {
       week,
       month,
       quarter,
-      year
+      year,
+      week_of_year
     ]
     sql: ${TABLE}.event_time ;;
   }
@@ -103,9 +104,17 @@ view: purchase {
   }
 
   dimension: txn_net_total {
-    type: string
-    sql: ${TABLE}.txn_net_total ;;
+    type: number
+    sql: CAST(${TABLE}.txn_net_total AS FLOAT64);;
+    value_format_name: usd_0
   }
+
+  measure: sum_txn_net {
+    type: sum
+    sql:  ${txn_net_total} ;;
+    value_format_name: usd_0
+  }
+
 
   dimension: txn_sale_type {
     type: string
@@ -149,6 +158,7 @@ view: purchase {
 
   measure: count {
     type: count
-    drill_fields: [txn_name]
+    drill_fields: [event_date, user_id, sku_id, unit_price, txn_store_id, txn_name]
   }
+
 }

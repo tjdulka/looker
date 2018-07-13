@@ -1,5 +1,9 @@
+
 explore: hit {
 }
+
+explore: hit {}
+
 view: hit {
   sql_table_name: `gcp-com-clickstream-test.dio.hit`
     ;;
@@ -672,7 +676,7 @@ view: hit {
 
   measure: count {
     type: count
-    drill_fields: [adobe_hit_id, interaction_name, template_name, page_name, task_name]
+    drill_fields: [visitor_token, time_gmt_date, referrer, page_name, page_url, adobe_hit_id, interaction_name, template_name, task_name]
   }
 }
 

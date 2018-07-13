@@ -14,6 +14,7 @@ view: active_products {
   dimension: current_price {
     type: number
     sql: ${TABLE}.current_price ;;
+    value_format_name: usd
   }
 
   dimension: current_price_event_type {
