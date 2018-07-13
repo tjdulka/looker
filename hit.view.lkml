@@ -1,7 +1,3 @@
-
-explore: hit {
-}
-
 explore: hit {}
 
 view: hit {
