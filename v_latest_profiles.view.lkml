@@ -117,4 +117,9 @@ measure: Question{
   sql:  ${question} + ' ' + ${list_item} ;;
 }
 
+measure: countProfiles {
+    type: number
+    sql: count(distinct ${application})  ;;
+}
+
 }
