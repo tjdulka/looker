@@ -112,16 +112,9 @@ view: v_latest_profiles {
     drill_fields: []
   }
 
-  measure: countProfiles {
-    type: number
-    sql:  count(distinct ${application})  ;;
-  }
-measure: countPCI {
-  type: number
-  sql:  count( ${answer}) WHERE ${list_item} = 'PCI' ;;
+measure: Question{
+  type: string
+  sql:  ${question} + ' ' + ${list_item} ;;
 }
-measure: countPII {
-  type: number
-  sql:  count( ${answer}) WHERE ${list_item} = 'PII'  ;;
-}
+
 }
