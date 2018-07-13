@@ -1,4 +1,6 @@
-view: product {
+explore: product {
+  }
+  view: product {
   sql_table_name: `gcp-com-clickstream-test.dio.product`
     ;;
 

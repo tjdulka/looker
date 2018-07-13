@@ -10,6 +10,7 @@
 # }
 #
 
+explore: visit {}
 
 view: visit {
   sql_table_name: `gcp-com-clickstream-test.dio.visit`

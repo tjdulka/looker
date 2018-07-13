@@ -1,3 +1,5 @@
+explore: hit {
+}
 view: hit {
   sql_table_name: `gcp-com-clickstream-test.dio.hit`
     ;;

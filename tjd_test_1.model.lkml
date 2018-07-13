@@ -3,8 +3,7 @@ connection: "tjd-bigquery"
 # include all the views
 include: "*.view"
 
-# include all the dashboards
-include: "bb.*.dashboard"
+
 
 datagroup: tjd_test_1_default_datagroup {
   sql_trigger: SELECT MAX(event_time) FROM Product.magellan_product_copy;;
@@ -32,6 +31,8 @@ explore: magellan_product_copy {
       value: "this year "
     }
   }
+
+
 # Example PDT implementation, persisting all changes based on trigger group value
   join: sku_spec_changes {
     view_label: "Magellan Product Copy"
@@ -49,6 +50,13 @@ explore: magellan_product_copy {
     view_label: "Category"
     sql_on: ${magellan_product_copy.sku_id} = ${category_copy.sku_id};;
     relationship: one_to_one
+  }
+
+  join: parent_category {
+    from: category_copy
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${category_copy.parent_cat_id} = ${category_copy.sku_id} ;;
   }
 
   join: magellan_product_copy__metadata {
