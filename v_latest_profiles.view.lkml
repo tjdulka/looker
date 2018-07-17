@@ -116,7 +116,7 @@ view: v_latest_profiles {
   measure: count {
     type: count
     drill_fields: []
-    html: <p align="right">{{ value }}</p>;;
+    html: <p align="center">{{ value }}</p>;;
   }
   measure: countDistinct {
     type: count_distinct
@@ -131,7 +131,7 @@ measure: Question{
 measure: countProfiles {
     type: number
     sql: count(distinct ${application})  ;;
-    html: <p align="right">{{ value }}</p>;;
+    html: <p align="center">{{ value }}</p>;;
 }
 
 }
