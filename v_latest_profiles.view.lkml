@@ -1,7 +1,8 @@
-explore: v_latest_profiles {}
 
 view: v_latest_profiles {
   sql_table_name: ApplicationProfiles.v_LatestProfiles ;;
+
+
 
   dimension: answer {
     type: string
@@ -17,6 +18,10 @@ view: v_latest_profiles {
   dimension: application {
     type: string
     sql: ${TABLE}.application ;;
+    link: {
+      label: "Select Application"
+      url: "/dashboards/8?application={{ _filters['v_LatestProfiles.application'] | url_encode }}"
+    }
   }
 
   dimension: category {
@@ -101,6 +106,11 @@ view: v_latest_profiles {
   dimension: section {
     type: string
     sql: ${TABLE}.section ;;
+  }
+
+  dimension: domainAndFunction {
+    type:  string
+    sql:  CONCAT(${domain},' - ',${function}) ;;
   }
 
   measure: count {

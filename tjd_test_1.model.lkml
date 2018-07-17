@@ -31,6 +31,20 @@ explore: order_graph {
 #
 # explore: flattened_products_copy {}
 
+explore: v_latest_profiles {
+  join: v_system_classification {
+    view_label: "Get only records by system classification is Yes"
+    sql_on: ${v_latest_profiles.application} = ${v_system_classification.application};;
+    relationship: many_to_one
+  }
+  join: v_personas {
+    view_label: "Get only records by system classification is Yes"
+    sql_on: ${v_latest_profiles.application} = ${v_personas.application};;
+    relationship: many_to_one
+  }
+
+}
+
 explore: magellan_product_copy {
   conditionally_filter: {
     filters: {
