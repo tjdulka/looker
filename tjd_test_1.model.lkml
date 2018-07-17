@@ -38,7 +38,7 @@ explore: v_latest_profiles {
     relationship: many_to_one
   }
   join: v_personas {
-    view_label: "Get only records by system classification is Yes"
+    view_label: "Get only records by persona is Yes"
     sql_on: ${v_latest_profiles.application} = ${v_personas.application};;
     relationship: many_to_one
   }

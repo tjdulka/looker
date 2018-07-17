@@ -20,7 +20,7 @@ view: v_latest_profiles {
     sql: ${TABLE}.application ;;
     link: {
       label: "Select Application"
-      url: "/dashboards/8?application={{ _filters['v_LatestProfiles.application'] | url_encode }}"
+      url: "/dashboards/8?Application={{ _filters['v_latest_profiles.application'] | url_encode }}"
     }
   }
 
