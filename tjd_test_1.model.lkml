@@ -33,16 +33,20 @@ explore: order_graph {
 
 explore: v_latest_profiles {
   join: v_system_classification {
-    view_label: "Get only records by system classification is Yes"
+    view_label: "System Classification"
     sql_on: ${v_latest_profiles.application} = ${v_system_classification.application};;
     relationship: many_to_one
   }
   join: v_personas {
-    view_label: "Get only records by persona is Yes"
+    view_label: "Persona"
     sql_on: ${v_latest_profiles.application} = ${v_personas.application};;
     relationship: many_to_one
   }
-
+  join: v_module_decomposition {
+    view_label: "Module Decomposition"
+    sql_on: ${v_latest_profiles.application}.application}.application} = ${v_module_decomposition.application}.application};;
+    relationship: many_to_one
+  }
 }
 
 explore: magellan_product_copy {
