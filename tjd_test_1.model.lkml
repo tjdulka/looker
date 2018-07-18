@@ -52,6 +52,37 @@ explore: v_latest_profiles {
     sql_on: ${v_latest_profiles.application}= ${v_operating_system_model.application};;
     relationship: many_to_one
   }
+  join: v_authentication {
+    view_label: "Authentication"
+    sql_on: ${v_latest_profiles.application}= ${v_authentication.application};;
+    relationship: many_to_one
+  }
+  join: v_compliance {
+    view_label: "Compliance"
+    sql_on: ${v_latest_profiles.application}= ${v_compliance.application};;
+    relationship: many_to_one
+  }join: v_encryption_at_rest {
+    view_label: "Encryption at Rest"
+    sql_on: ${v_latest_profiles.application}= ${v_encryption_at_rest.application};;
+    relationship: many_to_one
+  }join: v_production_deployment_methodology {
+    view_label: "Production Deployment Methodology"
+    sql_on: ${v_latest_profiles.application}= ${v_production_deployment_methodology.application};;
+    relationship: many_to_one
+  }join: v_rate_of_change {
+    view_label: "Rate of Change"
+    sql_on: ${v_latest_profiles.application}= ${v_rate_of_change.application};;
+    relationship: many_to_one
+  }join: v_release_methodology {
+    view_label: "Release Methodology"
+    sql_on: ${v_latest_profiles.application}= ${v_release_methodology.application};;
+    relationship: many_to_one
+  }
+  join: v_transport_level_security {
+    view_label: "Transport Level Security"
+    sql_on: ${v_latest_profiles.application}= ${v_transport_level_security.application};;
+    relationship: many_to_one
+  }
 }
 
 explore: magellan_product_copy {
