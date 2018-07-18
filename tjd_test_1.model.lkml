@@ -47,6 +47,11 @@ explore: v_latest_profiles {
     sql_on: ${v_latest_profiles.application}= ${v_module_decomposition.application};;
     relationship: many_to_one
   }
+  join: v_operating_system_model {
+    view_label: "Operating System Model"
+    sql_on: ${v_latest_profiles.application}= ${v_operating_system_model.application};;
+    relationship: many_to_one
+  }
 }
 
 explore: magellan_product_copy {
