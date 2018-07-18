@@ -44,7 +44,7 @@ explore: v_latest_profiles {
   }
   join: v_module_decomposition {
     view_label: "Module Decomposition"
-    sql_on: ${v_latest_profiles.application}.application} = ${v_module_decomposition.application};;
+    sql_on: ${v_latest_profiles.application}= ${v_module_decomposition.application};;
     relationship: many_to_one
   }
 }
