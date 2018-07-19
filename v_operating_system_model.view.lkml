@@ -16,6 +16,17 @@ view: v_operating_system_model {
     sql: ${TABLE}.operating_system_model_order ;;
   }
 
+  measure: maturityWeight {
+    type:  number
+    sql:  CASE WHEN ${operating_system_model} = 'Serverless'  THEN 5
+              WHEN ${operating_system_model} = 'Container'  THEN 4
+              WHEN ${operating_system_model} = 'On Demand Virtual'  THEN 3
+              WHEN ${operating_system_model} = 'Dedicated Virtual'  THEN 2
+              WHEN ${operating_system_model} = 'Dedicated Physical'  THEN 1
+              ELSE NULL
+         END ;;
+  }
+
   measure: count {
     type: count
     drill_fields: []

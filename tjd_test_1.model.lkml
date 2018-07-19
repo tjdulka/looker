@@ -83,6 +83,11 @@ explore: v_latest_profiles {
     sql_on: ${v_latest_profiles.application}= ${v_transport_level_security.application};;
     relationship: many_to_one
   }
+  join: v_platform_tenancy {
+    view_label: "Platform Tenancy Tolerance"
+    sql_on: ${v_latest_profiles.application}= ${v_platform_tenancy.application};;
+    relationship: many_to_one
+  }
 }
 
 explore: magellan_product_copy {
