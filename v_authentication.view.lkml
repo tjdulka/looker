@@ -11,6 +11,11 @@ view: v_authentication {
     sql: ${TABLE}.authentication ;;
   }
 
+  dimension: authentication_answer {
+    type: string
+    sql: ${TABLE}.authentication_answer ;;
+  }
+
   dimension: authentication_order {
     type: number
     sql: ${TABLE}.authentication_order ;;

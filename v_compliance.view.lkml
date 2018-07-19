@@ -11,6 +11,11 @@ view: v_compliance {
     sql: ${TABLE}.compliance ;;
   }
 
+  dimension: compliance_answer {
+    type: string
+    sql: ${TABLE}.compliance_answer ;;
+  }
+
   dimension: compliance_order {
     type: number
     sql: ${TABLE}.compliance_order ;;
