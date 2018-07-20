@@ -18,7 +18,7 @@ view: v_platform_tenancy {
 
   measure: maturityWeight {
     type:  number
-    sql:  CASE WHEN ${platform_tenancy} = 'Single Tenand'  THEN 2
+    sql:  CASE WHEN ${platform_tenancy} = 'Single Tenant'  THEN 2
               WHEN ${platform_tenancy} = 'Multi Tenant'  THEN 1
               ELSE NULL
          END ;;

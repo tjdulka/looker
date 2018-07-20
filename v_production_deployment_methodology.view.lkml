@@ -18,7 +18,7 @@ view: v_production_deployment_methodology {
 
   measure: maturityWeight {
     type:  number
-    sql:  CASE WHEN ${production_deployment_methodology} = 'Blue/Green'  THEN 2
+    sql:  CASE WHEN ${production_deployment_methodology} like 'Blue%'  THEN 2
               WHEN ${production_deployment_methodology} = 'Rolling Deployment'  THEN 3
               WHEN ${production_deployment_methodology} = 'Planned Downtime'  THEN 1
               ELSE NULL
