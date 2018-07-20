@@ -18,10 +18,10 @@ view: v_latest_profiles {
   dimension: application {
     type: string
     sql: ${TABLE}.application ;;
-    link: {
-      label: "Select Application"
-      url: "/dashboards/8?Application={{ _filters['v_latest_profiles.application'] | url_encode }}"
-    }
+  #  link: {
+  #    label: "Select Application"
+  #    url: "/dashboards/8?Application={{ _filters['v_latest_profiles.application'] | url_encode }}"
+  #  }
   }
 
   dimension: category {
