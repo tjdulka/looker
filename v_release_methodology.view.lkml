@@ -21,6 +21,7 @@ view: v_release_methodology {
     sql:  CASE WHEN ${release_methodology} = 'Continuous Integration'  THEN 2
               WHEN ${release_methodology} = 'Continuous Delivery'  THEN 3
               WHEN ${release_methodology} = 'Gated Environment Tiers'  THEN 1
+              WHEN ${release_methodology} = 'Other (specify in comments)' THEN 1
               ELSE NULL
          END ;;
   }
