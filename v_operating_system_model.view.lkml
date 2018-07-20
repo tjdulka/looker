@@ -24,7 +24,7 @@ view: v_operating_system_model {
               WHEN ${operating_system_model} = 'Container'  THEN 4
               WHEN ${operating_system_model} = 'Dedicated Virtual'  THEN 3
               WHEN ${operating_system_model} = 'Dedicated Physical'  THEN 1
-              ELSE NULL
+              ELSE 1
          END ;;
   }
 

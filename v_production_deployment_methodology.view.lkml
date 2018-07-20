@@ -21,7 +21,7 @@ view: v_production_deployment_methodology {
     sql:  CASE WHEN ${production_deployment_methodology} like 'Blue%'  THEN 5
               WHEN ${production_deployment_methodology} = 'Rolling Deployment'  THEN 3
               WHEN ${production_deployment_methodology} = 'Planned Downtime'  THEN 1
-              ELSE NULL
+              ELSE 1
          END ;;
   }
 

@@ -20,7 +20,7 @@ view: v_platform_tenancy {
     type:  number
     sql:  CASE WHEN ${platform_tenancy} = 'Single Tenant'  THEN 2
               WHEN ${platform_tenancy} = 'Multi Tenant'  THEN 1
-              ELSE NULL
+              ELSE 1
          END ;;
   }
 
