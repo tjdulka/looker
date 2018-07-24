@@ -1,4 +1,5 @@
 explore: demand_sensing {
+  cancel_grouping_fields: [demand_sensing.pog]
 }
 
 view: demand_sensing {
