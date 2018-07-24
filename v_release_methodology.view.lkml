@@ -18,8 +18,9 @@ view: v_release_methodology {
 
   measure: maturityWeight {
     type:  number
-    sql:  CASE WHEN ${release_methodology} = 'Continuous Integration'  THEN 3
+    sql:  CASE WHEN ${release_methodology} = 'Continuous Deployment'  THEN 6
               WHEN ${release_methodology} = 'Continuous Delivery'  THEN 5
+              WHEN ${release_methodology} = 'Continuous Integration'  THEN 3
               WHEN ${release_methodology} = 'Gated Environment Tiers'  THEN 1
               WHEN ${release_methodology} = 'Other (specify in comments)' THEN 1
               ELSE 1

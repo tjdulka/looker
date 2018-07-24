@@ -18,7 +18,7 @@ view: v_operating_system_model {
 
   measure: maturityWeight {
     type:  number
-    sql:  CASE WHEN ${operating_system_model} = 'Serverless'  THEN 8
+    sql:  CASE WHEN ${operating_system_model} = 'Serverless'  THEN 10
               WHEN ${operating_system_model} = 'Cloud Container'  THEN 7
               WHEN ${operating_system_model} = 'On Demand Virtual'  THEN 6
               WHEN ${operating_system_model} = 'Container'  THEN 4
