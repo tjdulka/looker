@@ -73,14 +73,14 @@ view: demand_sensing {
     sql: ${TABLE}.users ;;
   }
 
-  measure: count_users {
+  measure: users_sum {
     type: number
-    sql: ${users} ;;
+    sql: SUM(${users}) ;;
   }
 
-  measure: count_sales {
+  measure: sales_sum {
     type: number
-    sql: ${sales} ;;
+    sql: SUM(${sales}) ;;
   }
 
   measure: count {
