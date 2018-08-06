@@ -56,6 +56,10 @@ view: v_latest_profiles {
   dimension: domain {
     type: string
     sql: ${TABLE}.domain ;;
+    link: {
+      label: "View Domain Summary"
+      url: "/dashboards/13?Domain={{ _filters['v_latest_profiles.domain'] | url_encode }}"
+    }
   }
 
   dimension_group: extract_event {
