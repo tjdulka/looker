@@ -10,6 +10,7 @@ view: v_search_term_occurances {
       raw,
       time,
       date,
+      hour,
       week,
       month,
       quarter,
