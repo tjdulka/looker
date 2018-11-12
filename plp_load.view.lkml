@@ -1,7 +1,7 @@
 explore: plp_load {
 }
 view: plp_load {
-  sql_table_name: `gcp-com-clickstream-test.clickstream.plp_load`
+  sql_table_name: `gcp-com-clickstream-prod.clickstream.plp_load`
     ;;
 
   dimension: category_id {
