@@ -1,28 +1,21 @@
-explore: v_order_volume{
-
-}
+explore: v_order_volume {
+  }
 
 view: v_order_volume {
   sql_table_name: Test.v_order_volume ;;
 
-  dimension_group: order {
+  dimension_group: order_date {
     type: time
     timeframes: [
       raw,
+      time,
       date,
       week,
       month,
       quarter,
       year
     ]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.order_date ;;
-  }
-
-  dimension: order_hour {
-    type: number
-    sql: ${TABLE}.order_hour ;;
+    sql: CAST(${TABLE}.order_date_time AS TIMESTAMP) ;;
   }
 
   dimension: orders {
