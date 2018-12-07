@@ -53,9 +53,9 @@
     dynamic_fields:
     - table_calculation: budget
       label: Budget
-      expression: '750'
+      expression: '0'
       value_format:
-      value_format_name: gbp_0
+      value_format_name: usd_0
       _kind_hint: dimension
       _type_hint: number
     custom_color_enabled: false
