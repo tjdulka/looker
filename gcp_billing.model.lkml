@@ -1,4 +1,4 @@
-connection: "tjd-bigquery"
+connection: "ddg-bigquery"
 
 include: "gcp.*.view.lkml"         # include all views in this project
 include: "gcp.billing.dashboard.lookml"  # include all dashboards in this project
